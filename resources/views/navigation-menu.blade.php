@@ -13,7 +13,20 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('dashboard.title') }}
+                        @php
+                            $roles =  Auth::user()->getRoleNames()->toArray();
+                        @endphp
+
+                        @if (in_array('rentler', $roles))
+                            {{ __('dashboard.titleRentler') }}
+                        @elseif (in_array('vehicle-owner', $roles))
+                            {{ __('dashboard.titleVehicleOwner') }}
+                        @elseif (in_array('admin', $roles))
+                            {{ __('dashboard.titleAdmin') }}
+                        @else
+                            {{ __('dashboard.title') }}
+                        @endif
+
                     </x-nav-link>
                 </div>
             </div>

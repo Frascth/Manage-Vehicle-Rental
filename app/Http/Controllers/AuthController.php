@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public static function redirectDashboard (Request $request) {
+    public function login(Request $request) {
+        return 'welcome';
+
+    }
+
+    public function redirectDashboard (Request $request) {
         $roles = Auth::user()->getRoleNames()->toArray();
         
         if (in_array('rentler', $roles)) {

@@ -16,6 +16,8 @@
 
         <!-- Styles -->
         @livewireStyles
+        {{ $styling ?? '' }}
+        @yield('styling')
     </head>
     <body class="font-sans antialiased">
         <x-banner />
@@ -28,18 +30,28 @@
                 <header class="bg-white dark:bg-gray-800 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
+                        @yield('header')
                     </div>
                 </header>
             @endif
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                {{ $slot ?? ''}}
+                @yield('slot')
+                @yield('main')
             </main>
         </div>
 
-        @stack('modals')
+        <!-- Page Footer -->
+        <footer class="font-sans antialiased bg-gray-100 dark:bg-gray-900bg-gray-100 dark:bg-gray-900">
+            {{ $footer ?? ''}}
+            @yield('footer')
+        </footer>
 
+        @stack('modals')
         @livewireScripts
+        {{ $scripts ?? '' }}
+        @yield('scripts')
     </body>
 </html>
