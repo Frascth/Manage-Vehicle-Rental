@@ -60,4 +60,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function vehicle_posts() {
+        return $this->hasMany(VehiclePost::class, 'owner_id', 'id');
+    }
 }

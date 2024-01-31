@@ -16,23 +16,26 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'name' => 'admin1',
-            'email' => 'admin1@gmail.com',
-            'password' => Hash::make('password1'),
-        ]);
+        for ($i = 2; $i < 20; $i++) {
+            DB::table('users')->insert([
+                'name' => 'admin' . $i,
+                'email' => 'admin' . $i . '@gmail.com',
+                'password' => Hash::make('password1'),
+            ]);
+    
+            DB::table('users')->insert([
+                'name' => 'vehicle-owner' . $i,
+                'email' => 'vehicle-owner' . $i . '@gmail.com',
+                'password' => Hash::make('password1'),
+            ]);
+    
+            DB::table('users')->insert([
+                'name' => 'rentler' . $i,
+                'email' => 'rentler' . $i . '@gmail.com',
+                'password' => Hash::make('password1'),
+            ]);
+        }
 
-        DB::table('users')->insert([
-            'name' => 'vehicle-owner1',
-            'email' => 'vehicle-owner1@gmail.com',
-            'password' => Hash::make('password1'),
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'rentler1',
-            'email' => 'rentler1@gmail.com',
-            'password' => Hash::make('password1'),
-        ]);
 
         // User::factory()
         //     ->count(3)

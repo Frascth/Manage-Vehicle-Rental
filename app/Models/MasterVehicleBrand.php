@@ -9,4 +9,8 @@ class MasterVehicleBrand extends Model
 {
     use HasFactory;
     protected $table = 'm_vehicle_brand';
+
+    public function vehicle_posts() {
+        return $this->hasMany(VehiclePost::class, 'brand_id', 'id');
+    }
 }

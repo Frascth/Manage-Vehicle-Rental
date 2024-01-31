@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VehiclePost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +21,12 @@ class AuthController extends Controller
         }
 
         if (in_array('vehicle-owner', $roles)) {
-            return view('dashboard.vehicle-owner');
+            $vehiclePosts = VehiclePost::with(['vehicle_owner', 'brand'])
+                ->get()
+                ->toArray();
+            return view('dashboard.vehicle-owner',[
+                'vehiclePosts' => $vehiclePosts,
+            ]);
         } 
 
         if (in_array('admin', $roles)) {
