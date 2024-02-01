@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Livewire\Dashboard\VehicleOwner;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', [DashboardController::class, 'index']);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', [AuthController::class, 'redirectDashboard'])->name('dashboard');
+    Route::get('/dashboard', VehicleOwner::class)->name('dashboard');
 });
