@@ -1,0 +1,13 @@
+yajra require maatwebsite/excel require enable gd extension
+  - maatwebsite/excel docs https://docs.laravel-excel.com/3.1/getting-started/installation.html
+  - if composer still failed just manually edit the version to 3.1.52 and composer update
+  - open php.ini file, uncomment extension=gd
+
+yajra add livewire component
+ - https://github.com/yajra/laravel-datatables/issues/2401
+
+remove flicker on page load alpinejs
+  - resources\css\app.css remove [x-cloak] { display: none; }
+
+livewire component in the subfolder
+  - if all path and naming is correct but the @livewire('something.sub') still not found, check the component class namespace it must be match
