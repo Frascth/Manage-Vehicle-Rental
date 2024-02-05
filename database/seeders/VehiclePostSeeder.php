@@ -14,7 +14,7 @@ class VehiclePostSeeder extends Seeder
     public function run(): void
     {
         // VehiclePost::factory()->count(1000)->create();
-        $count = 5000;
+        $count = 7000;
         $this->command->getOutput()->progressStart($count);
         for ($i = 0; $i < $count; $i++) {
             VehiclePost::factory()->create();

@@ -16,7 +16,9 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 2; $i < 20; $i++) {
+        $count = 20;
+        $this->command->getOutput()->progressStart($count);
+        for ($i = 1; $i <= $count; $i++) {
             DB::table('users')->insert([
                 'name' => 'admin' . $i,
                 'email' => 'admin' . $i . '@gmail.com',
@@ -34,7 +36,10 @@ class UserSeeder extends Seeder
                 'email' => 'rentler' . $i . '@gmail.com',
                 'password' => Hash::make('password1'),
             ]);
+            $this->command->getOutput()->progressAdvance();
         }
+        $this->command->getOutput()->progressFinish();
+
 
 
         // User::factory()
