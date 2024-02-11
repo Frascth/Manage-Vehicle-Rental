@@ -11,3 +11,8 @@ remove flicker on page load alpinejs
 
 livewire component in the subfolder
   - if all path and naming is correct but the @livewire('something.sub') still not found, check the component class namespace it must be match
+
+datatables for livewire there is some option
+  - https://github.com/rappasoft/laravel-livewire-tables (select all not respond)
+  - https://github.com/Power-Components/livewire-powergrid (styling not work)
+  - https://github.com/mediconesystems/livewire-datatables

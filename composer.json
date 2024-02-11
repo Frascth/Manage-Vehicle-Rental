@@ -13,6 +13,10 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
         "maatwebsite/excel": "3.1.52",
+        "openspout/openspout": "^4.23",
+        "phpoffice/phpspreadsheet": "^1.29",
+        "power-components/livewire-powergrid": "^5.3",
+        "rappasoft/laravel-livewire-tables": "^3.2",
         "spatie/laravel-permission": "^6.3",
         "yajra/laravel-datatables": "10.0",
         "yajra/laravel-datatables-oracle": "^10.0"

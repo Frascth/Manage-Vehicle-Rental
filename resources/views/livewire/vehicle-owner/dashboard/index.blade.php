@@ -1,1 +1,3 @@
-<div>dashboard vehicle owner</div>
+<div class="dark m-4 bg-gray-900">
+  @livewire('VehicleOwner.VehiclePostTable')
+</div>

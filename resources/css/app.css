@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* [x-cloak] {
-    display: none;
-} */
+/* powergrid datepicker */
+@import "flatpickr/dist/flatpickr.min.css";
+
+[x-cloak] {
+    display: none !important;
+}

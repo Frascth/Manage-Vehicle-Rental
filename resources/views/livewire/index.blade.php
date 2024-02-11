@@ -1,13 +1,13 @@
-<div>
+<div class="dark">
     @php
         $roles = Auth::user()->getRoleNames()->toArray();
     @endphp
 
     @if (in_array('rentler', $roles)) 
-        @livewire('rentler.dashboard.index')
+        @livewire('Rentler.Dashboard.Index')
     @elseif (in_array('vehicle-owner', $roles))
-        @livewire('vehicle-owner.dashboard.index')
+        @livewire('VehicleOwner.Dashboard.index')
     @elseif (in_array('admin', $roles))
-        @livewire('admin.dashboard.index')
+        @livewire('Admin.Dashboard.Index')
     @endif
 </div>
