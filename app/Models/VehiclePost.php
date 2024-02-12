@@ -11,9 +11,9 @@ class VehiclePost extends Model
     protected $table = 'vehicle_posts';
     protected $fillable = [
         'brand_id',
-        'vehicle_type',
+        'vehicle_type_id',
         'model',
-        'transmission_type',
+        'transmission_type_id',
         'door_count',
         'seat_count',
         'max_fuel',

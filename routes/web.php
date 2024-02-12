@@ -4,6 +4,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestingController;
 use App\Livewire\Dashboard\VehicleOwner;
 use App\Livewire\Index;
+use App\Livewire\VehicleOwner\VehiclePost\VehiclePostDelete;
+use App\Livewire\VehicleOwner\VehiclePost\VehiclePostEdit;
+use App\Livewire\VehicleOwner\VehiclePost\VehiclePostView;
+use App\Models\VehiclePost;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +35,14 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', Index::class)->name('dashboard');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/vehicle-post/view/{id}', VehiclePostView::class)->name('vehicle-post.view');
+    Route::get('/vehicle-post/edit/{id}', VehiclePostEdit::class)->name('vehicle-post.edit');
+    Route::delete('/vehicle-post/delete/{id}', VehiclePostDelete::class)->name('vehicle-post.delete');
 });

@@ -7,6 +7,7 @@ use App\Helpers\Constant;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\VehiclePost;
+use Carbon\Carbon;
 use Error;
 use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\ToArray;
@@ -27,6 +28,22 @@ class VehiclePostTable extends DataTableComponent
     {
         $this->setPrimaryKey('id');
 
+        // styling bootstrap 5
+        $this->setTableAttributes([
+            'class' => 'table table-striped table-hover',
+        ]);
+        $this->setTdAttributes(function(Column $column, $row, $columnIndex, $rowIndex) {
+            return [
+                'class' => 'text-nowrap',
+            ];
+         
+        });
+        $this->setThAttributes(function(Column $column) {
+            return [
+                'class' => 'text-nowrap',
+            ];
+        });
+
         // bulk action
     }
 
@@ -38,7 +55,7 @@ class VehiclePostTable extends DataTableComponent
     }
 
     public function exportSelected() {
-        return Excel::download(new VehiclePostExport($this->getSelected()), 'vehicle_posts.xlsx');
+        return Excel::download(new VehiclePostExport($this->getSelected()), 'vehicle_posts_' . Carbon::now()->format('d_m_Y') . '.xlsx');
         $this->clearSelected();
     }
 
@@ -84,6 +101,17 @@ class VehiclePostTable extends DataTableComponent
                 ->sortable(),
             Column::make("Updated at", "updated_at")
                 ->sortable(),
+
+            Column::make('Action')
+            ->label(
+                fn ($row, Column $column) => view('components.livewire.datatables.action-column')->with(
+                    [
+                        'viewLink' => route('vehicle-post.view', $row),
+                        'editLink' => route('vehicle-post.edit', $row),
+                        'deleteLink' => route('vehicle-post.delete', $row),
+                    ]
+                )
+            )->html(),
         ];
     }
 
