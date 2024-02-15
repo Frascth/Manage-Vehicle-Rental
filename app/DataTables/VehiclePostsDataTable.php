@@ -68,7 +68,7 @@ class VehiclePostsDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('id'),
-            Column::make('vehicle_type'),
+            Column::make('vehicle_type_id'),
             Column::make('created_at'),
             Column::make('updated_at'),
         ];
